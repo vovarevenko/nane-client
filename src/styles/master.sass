@@ -1,0 +1,58 @@
+.q-drawer--left
+  border-right: 1px solid #eee
+
+.q-item__label,
+.q-item__label--caption
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.preloader
+  background-color: #fff
+  z-index: 1
+
+  img
+    display: block
+    height: 30px
+    margin: 30px auto
+
+.preloader,
+.chat
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+
+  & &-input
+    -webkit-box-flex-group: 1
+    flex-grow: 1
+    max-height: 48px
+
+  &-history
+    -webkit-box-flex-group: 2
+    flex-grow: 2
+
+  &-scroller
+    height: 100%
+    overflow-y: scroll
+
+.input-panel
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+  width: 100%
+
+.message-input
+
+  .q-field__native
+    color: #eceff1
+
+    &::-webkit-input-placeholder,
+    &:-ms-input-placeholder,
+    &::placeholder
+      color: #90a4ae
+
+  .q-field__after
+    color: white
