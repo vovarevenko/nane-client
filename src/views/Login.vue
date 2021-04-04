@@ -12,7 +12,7 @@
         :maxlength="maxLength"
       >
         <template v-slot:after>
-          <q-btn round dense flat icon="fas fa-check" type="submit" />
+          <q-btn round dense flat icon="fas fa-check" @click="submit" />
         </template>
       </q-input>
     </q-form>
