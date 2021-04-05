@@ -1,5 +1,6 @@
 import camelcaseKeys from 'camelcase-keys'
 import { ActionContext as BaseActionContext, ActionTree } from 'vuex'
+import { router } from '@/router'
 import { Getters } from '@/store/getters'
 import { Mutations, MutationType } from '@/store/mutations'
 import { State } from '@/store/state'
@@ -67,6 +68,7 @@ export const actions: ActionTree<State, State> & Actions = {
     if (getters.username) {
       if (!getters.username.trim()) {
         commit(MutationType.SetUsername, undefined)
+        router.push('/login')
       } else {
         useSocket(getters.username)
       }
