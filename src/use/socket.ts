@@ -1,12 +1,15 @@
 import { Message } from '@/models'
 import { MutationType, store } from '@/store'
 
+// const firstConnect = true
 let socket: WebSocket
 let url: string
 
 export function useSocket(username?: string): WebSocket | undefined {
   if (username) {
-    url = `${process.env.VUE_APP_SOCKET}?username=${username}`
+    url = `${process.env.VUE_APP_SOCKET}?username=${encodeURIComponent(
+      username,
+    )}`
 
     if (socket) {
       if (socket.url !== url) {
