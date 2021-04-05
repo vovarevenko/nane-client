@@ -60,11 +60,17 @@ export type Actions = {
 }
 
 export const actions: ActionTree<State, State> & Actions = {
-  async [ActionType.Bootstrap]({ dispatch, getters }) {
+  async [ActionType.Bootstrap]({ commit, dispatch, getters }) {
     await dispatch(ActionType.FetchSettings)
     await dispatch(ActionType.FetchRooms)
 
-    if (getters.username) useSocket(getters.username)
+    if (getters.username) {
+      if (!getters.username.trim()) {
+        commit(MutationType.SetUsername, undefined)
+      } else {
+        useSocket(getters.username)
+      }
+    }
   },
 
   async [ActionType.FetchSettings]({ commit }) {

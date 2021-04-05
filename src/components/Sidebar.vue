@@ -44,7 +44,8 @@ export default defineComponent({
     }
 
     async function createRoom() {
-      const name = prompt('Название комнаты', '')
+      const name = prompt('Название комнаты', '')?.trim()
+
       if (name) {
         if (maxLength.value && name.length > maxLength.value) {
           alert(`Разрешенное кол-во символов: ${maxLength.value}`)
@@ -52,6 +53,8 @@ export default defineComponent({
           await store.dispatch(ActionType.CreateRoom, name)
           router.push(`/room/${name}`)
         }
+      } else {
+        alert('Нужен хотя бы один символ!')
       }
     }
 

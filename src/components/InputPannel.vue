@@ -45,14 +45,18 @@ export default defineComponent({
     }
 
     function sendMessage() {
-      if (message.value && currentRoom.value) {
+      const text = message.value?.trim()
+
+      if (text && currentRoom.value) {
         store.dispatch(ActionType.SendMessage, {
           roomName: currentRoom.value.name,
-          text: message.value,
+          text,
         })
         emit('message')
         message.value = null
         focusInput()
+      } else {
+        alert('Нужен хотя бы один символ!')
       }
     }
 

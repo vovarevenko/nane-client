@@ -31,9 +31,13 @@ export default defineComponent({
     const maxLength = computed(() => store.getters.settings?.maxUsernameLength)
 
     async function submit() {
-      if (username.value) {
-        await store.dispatch(ActionType.ChangeUsername, username.value)
+      const value = username.value.trim()
+
+      if (value) {
+        await store.dispatch(ActionType.ChangeUsername, value)
         router.push('/')
+      } else {
+        alert('Нужен хотя бы один символ!')
       }
     }
 
